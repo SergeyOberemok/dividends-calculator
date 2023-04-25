@@ -1,0 +1,91 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>9d168450-5b7d-422d-82ce-cc53db4645ed</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>DividendsExchangeCalculator.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>DividendsExchangeCalculator</Name>
+    <RootNamespace>DividendsExchangeCalculator</RootNamespace>
+    <TestFramework>pytest</TestFramework>
+    <UnitTestPattern>test*.py</UnitTestPattern>
+    <UnitTestRootDirectory>.</UnitTestRootDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="domain\models\country.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="domain\services\countriesService.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="domain\test\services\test_countriesService.py" />
+    <Compile Include="domain\test\services\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="domain\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="domain\helpers\numbers.py" />
+    <Compile Include="domain\models\dividend.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DividendsExchangeCalculator.py" />
+    <Compile Include="domain\models\payment.py" />
+    <Compile Include="domain\services\dividendsReader.py" />
+    <Compile Include="domain\services\dividendsWriter.py" />
+    <Compile Include="domain\services\exchangeRateService.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="domain\helpers\dates.py" />
+    <Compile Include="domain\helpers\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="domain\models\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="domain\services\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="domain\test\helpers\test_dates.py" />
+    <Compile Include="domain\test\helpers\test_numbers.py" />
+    <Compile Include="domain\test\helpers\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="domain\test\models\test_dividend.py" />
+    <Compile Include="domain\test\models\test_payment.py" />
+    <Compile Include="domain\test\models\__init__.py" />
+    <Compile Include="domain\test\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="domain\" />
+    <Folder Include="domain\helpers\" />
+    <Folder Include="domain\models\" />
+    <Folder Include="domain\services\" />
+    <Folder Include="domain\test\" />
+    <Folder Include="domain\test\helpers\" />
+    <Folder Include="domain\test\models\" />
+    <Folder Include="domain\test\services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
