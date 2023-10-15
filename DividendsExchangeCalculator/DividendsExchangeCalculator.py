@@ -32,7 +32,7 @@ class DividendsExchangeCalculator:
             True if input("Fetch exchange rate [y/N] ") == "y" else False
         )
 
-    def main(self) -> bool:
+    def main(self) -> None:
         self.__fetchDividends()
 
         self.__updateDividendsCountries()

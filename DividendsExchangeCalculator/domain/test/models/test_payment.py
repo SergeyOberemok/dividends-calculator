@@ -1,4 +1,3 @@
-
 import pytest
 from ...models.payment import Payment, PaymentFactory
 
@@ -6,7 +5,7 @@ from ...models.payment import Payment, PaymentFactory
 def test_payment() -> None:
     currency, gross, withhold, exchangeRate = "usd", 125, 25, 4.44
 
-    payment = Payment(currency, str(gross), str(withhold), str(exchangeRate))
+    payment = Payment(currency, str(gross), str(withhold), exchangeRate)
 
     assert payment.currency == currency
     assert payment.gross == gross
@@ -27,9 +26,10 @@ def test_paymentFactory() -> None:
 def getIsTaxRelief():
     return lambda: True
 
+
 @pytest.fixture
-def paymentMock(getIsTaxRelief = lambda: False) -> Payment:
-    return Payment("", 0, 0, isTaxRelief = getIsTaxRelief)
+def paymentMock(getIsTaxRelief=lambda: False) -> Payment:
+    return Payment("", 0, 0, isTaxRelief=getIsTaxRelief)
 
 
 def test_earned(paymentMock) -> None:
@@ -54,8 +54,9 @@ def test_paidTaxPercentage(paymentMock, grossAndWithholdMockList) -> None:
 
 def test_defaultTaxPercentageToPay(paymentMock) -> None:
     taxPercentage = Payment.taxPercentage = 10
-    
+
     assert paymentMock.taxPercentageToPay == taxPercentage
+
 
 def test_taxPercentageToPay(getIsTaxRelief, paymentMock) -> None:
     gross = paymentMock.gross = 100
@@ -64,6 +65,7 @@ def test_taxPercentageToPay(getIsTaxRelief, paymentMock) -> None:
 
     assert paymentMock.taxPercentageToPay < taxPercentage
     assert paymentMock.taxPercentageToPay == taxPercentage - (gross * withhold / 100)
+
 
 def test_taxToPay(paymentMock) -> None:
     gross = paymentMock.gross = 200

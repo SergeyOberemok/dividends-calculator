@@ -1,4 +1,3 @@
-
 import pytest
 from ...models.dividend import Dividend
 from datetime import datetime
@@ -15,9 +14,11 @@ def test_dividend() -> None:
     assert dividend.quantity == shares
     assert dividend.prevWorkingDateBeforePaid != reportDate
 
+
 @pytest.fixture
 def dividendMock() -> Dividend:
     return Dividend('', '', '', datetime.now(), 0, [])
+
 
 def test_prevWorkingDateBeforePaid(dividendMock) -> None:
     reportDate = dividendMock.dateOfEarning = datetime(2023, 4, 25)

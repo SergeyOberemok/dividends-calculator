@@ -3,3 +3,4 @@ TestResults
 **/__pycache__
 **/.pytest_cache
 sources
+.idea
