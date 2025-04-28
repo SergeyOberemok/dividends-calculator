@@ -1,5 +1,5 @@
-
 from ..helpers.numbers import parseFloat, exchange
+
 
 class Payment:
     taxPercentage: int
@@ -9,7 +9,7 @@ class Payment:
     _withhold: float
     _exchangeRate: float
 
-    def __init__(self, currency, gross, withhold, exchangeRate: float = 1, isTaxRelief = lambda: False) -> None:
+    def __init__(self, currency, gross, withhold, exchangeRate: float = 1, isTaxRelief=lambda: False) -> None:
         self._currency = currency
         self.gross = gross
         self.withhold = withhold
@@ -83,7 +83,7 @@ class Payment:
             'withhold': self._withhold,
             'earned': self.earned,
             'taxToPay': self.taxToPay,
-            }
+        }
 
     def __str__(self) -> str:
         return f"""Earned {self.earned} {self.currency} = gross {self.gross} minus withhold {self.withhold} ({self.paidTaxPercentage}%). To pay {self.taxToPay} ({self.taxPercentageToPay}%). Exchange rate was {self.exchangeRate}
@@ -91,7 +91,7 @@ class Payment:
 
 
 class PaymentFactory:
-    
+
     def create(currency: str, gross, withhold, exchangeRate) -> Payment:
         gross = parseFloat(gross)
         withhold = parseFloat(withhold)

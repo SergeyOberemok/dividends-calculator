@@ -11,6 +11,7 @@ class CountriesService:
             Country("GG", "Guernsey", True),
             Country("IE", "Ireland", True),
             Country("CH", "Switzerland", True),
+            Country("IL", "Israel", True),
         ]
 
     def fetchByCode(self, code: str) -> Country:

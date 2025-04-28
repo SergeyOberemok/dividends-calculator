@@ -1,8 +1,8 @@
-
 from abc import ABC, abstractmethod
-from ..models.dividend import Dividend
-from itertools import chain
 from functools import reduce
+from itertools import chain
+
+from ..models.dividend import Dividend
 
 
 class IWriter(ABC):
@@ -18,14 +18,16 @@ class DividendsConsoleWriter(IWriter):
 
         return True
 
-class DividentsSummaryConsoleWriter(IWriter):
-    def write(self, dividents: list[Dividend]) -> bool:
-        print(self.__getSummary(dividents))
+
+class DividendsSummaryConsoleWriter(IWriter):
+    def write(self, dividends: list[Dividend]) -> bool:
+        print(self.__getSummary(dividends))
 
         return True
 
-    def __getSummary(self, dividents: list[Dividend]) -> str:
-        listOfSummaries = [*(dividend.getSummary() for dividend in dividents)]
+    @staticmethod
+    def __getSummary(dividends: list[Dividend]) -> str:
+        listOfSummaries = [*(dividend.getSummary() for dividend in dividends)]
         summaries = list(chain(*listOfSummaries))
         currencies = []
 
@@ -33,7 +35,7 @@ class DividentsSummaryConsoleWriter(IWriter):
             if summary['currency'] not in currencies:
                 currencies.append(summary['currency'])
 
-        result = f"""Dividends are {len(dividents)}. Currencies are {len(currencies)}
+        result = f"""Dividends are {len(dividends)}. Currencies are {len(currencies)}
 """
 
         for currency in currencies:

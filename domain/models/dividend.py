@@ -95,7 +95,7 @@ class Dividend:
         payments = "".join(str(payment) for payment in self.payments)
 
         return f"""
-{self.symbol} from {self.country} of currency {self.currency} on {printDay(self.dateOfEarning)} {toDateStringISO(self.dateOfEarning)}
+Symbol {self.symbol} from country {self.country} of currency {self.currency} on {printDay(self.dateOfEarning)} {toDateStringISO(self.dateOfEarning)}
 Earnings on {printDay(self.prevWorkingDateBeforePaid)} {toDateStringISO(self.prevWorkingDateBeforePaid)} were:
 {payments}
 """
